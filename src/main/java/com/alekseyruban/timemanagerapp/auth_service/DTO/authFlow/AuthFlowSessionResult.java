@@ -1,4 +1,4 @@
-package com.alekseyruban.timemanagerapp.auth_service.DTO;
+package com.alekseyruban.timemanagerapp.auth_service.DTO.authFlow;
 
 import lombok.*;
 
