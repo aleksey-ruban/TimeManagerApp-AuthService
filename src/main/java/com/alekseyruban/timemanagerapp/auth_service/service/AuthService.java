@@ -99,7 +99,7 @@ public class AuthService {
         String refreshToken = jwtService.generateRefreshToken(authSession.getSessionId());
         String refreshTokenHash = tokenEncoder.hash(refreshToken);
 
-        String accessToken = jwtService.generateAccessToken(authSession.getSessionId());
+        String accessToken = jwtService.generateAccessToken(user.getId(), authSession.getSessionId());
         String accessTokenHash = tokenEncoder.hash(accessToken);
 
         authSession.setAccessTokenHash(accessTokenHash);
@@ -173,7 +173,7 @@ public class AuthService {
         String refreshToken = jwtService.generateRefreshToken(authSession.getSessionId());
         String refreshTokenHash = tokenEncoder.hash(refreshToken);
 
-        String accessToken = jwtService.generateAccessToken(authSession.getSessionId());
+        String accessToken = jwtService.generateAccessToken(authSession.getUser().getId(), authSession.getSessionId());
         String accessTokenHash = tokenEncoder.hash(accessToken);
 
         authSession.setAccessTokenHash(accessTokenHash);

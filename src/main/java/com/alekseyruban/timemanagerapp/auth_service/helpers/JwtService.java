@@ -27,9 +27,10 @@ public class JwtService {
         this.secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String generateAccessToken(Long sessionId) {
+    public String generateAccessToken(Long userId, Long sessionId) {
         Instant now = Instant.now();
         return Jwts.builder()
+                .subject(userId.toString())
                 .claim("sessionId", sessionId)
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(now.plusSeconds(ACCESS_TOKEN_LIVE)))
