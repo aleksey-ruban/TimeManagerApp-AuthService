@@ -4,6 +4,7 @@ import com.alekseyruban.timemanagerapp.auth_service.DTO.authFlow.AuthFlowComplet
 import com.alekseyruban.timemanagerapp.auth_service.DTO.authFlow.AuthFlowSessionResult;
 import com.alekseyruban.timemanagerapp.auth_service.DTO.authFlow.AuthFlowStartRequest;
 import com.alekseyruban.timemanagerapp.auth_service.DTO.authFlow.AuthFlowVerifyRequest;
+import com.alekseyruban.timemanagerapp.auth_service.DTO.rabbit.UserCreatedEvent;
 import com.alekseyruban.timemanagerapp.auth_service.entity.AuthFlowSession;
 import com.alekseyruban.timemanagerapp.auth_service.entity.User;
 import com.alekseyruban.timemanagerapp.auth_service.exception.ApiException;
@@ -32,6 +33,7 @@ public class RegistrationService {
     private final EmailService emailService;
     private final TextValidator textValidator;
     private final PasswordValidator passwordValidator;
+    private final UserEventPublisher userEventPublisher;
 
     public AuthFlowSessionResult startRegistration(AuthFlowStartRequest request) {
         if (userRepository.findByEmailAndDeletedFalse(request.getEmail()).isPresent()) {
@@ -251,7 +253,8 @@ public class RegistrationService {
                     .build();
         }
 
-        userRepository.save(user);
+        User userSaved = userRepository.save(user);
+        userEventPublisher.publishUserCreated(new UserCreatedEvent(userSaved.getId()));
         sessionRepository.delete(session);
     }
 

@@ -20,6 +20,12 @@ spring:
         format_sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  rabbitmq:
+    host: localhost
+    port: ${RABBIT_PORT}
+    username: ${RABBIT_USERNAME}
+    password: ${RABBIT_PASSWORD}
+
   mail:
     host: smtp.gmail.com
     port: 587
