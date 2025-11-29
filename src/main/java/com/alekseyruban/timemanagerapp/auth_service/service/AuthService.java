@@ -6,7 +6,7 @@ import com.alekseyruban.timemanagerapp.auth_service.entity.User;
 import com.alekseyruban.timemanagerapp.auth_service.exception.ApiException;
 import com.alekseyruban.timemanagerapp.auth_service.exception.ErrorCode;
 import com.alekseyruban.timemanagerapp.auth_service.helpers.JwtService;
-import com.alekseyruban.timemanagerapp.auth_service.helpers.TokenEncoder;
+import com.alekseyruban.timemanagerapp.auth_service.utils.TokenEncoder;
 import com.alekseyruban.timemanagerapp.auth_service.repository.AuthSessionRepository;
 import com.alekseyruban.timemanagerapp.auth_service.repository.UserRepository;
 import io.jsonwebtoken.JwtException;

@@ -1,4 +1,4 @@
-package com.alekseyruban.timemanagerapp.auth_service.helpers;
+package com.alekseyruban.timemanagerapp.auth_service.utils;
 
 
 import org.springframework.beans.factory.annotation.Value;

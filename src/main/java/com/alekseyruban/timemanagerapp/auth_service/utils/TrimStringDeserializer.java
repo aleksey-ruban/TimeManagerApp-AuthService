@@ -1,4 +1,4 @@
-package com.alekseyruban.timemanagerapp.auth_service.config;
+package com.alekseyruban.timemanagerapp.auth_service.utils;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
