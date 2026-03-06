@@ -3,6 +3,7 @@ package com.alekseyruban.timemanagerapp.auth_service.controller.v1;
 import com.alekseyruban.timemanagerapp.auth_service.DTO.userOperations.NewNameRequest;
 import com.alekseyruban.timemanagerapp.auth_service.DTO.userOperations.UserResponseDTO;
 import com.alekseyruban.timemanagerapp.auth_service.service.UserService;
+import com.alekseyruban.timemanagerapp.auth_service.utils.idempotency.Idempotent;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,7 @@ public class UserController {
     }
 
     @PatchMapping("/update-profile")
+    @Idempotent
     public ResponseEntity<?> updateFirstName(
             @RequestHeader("X-Session-Id") Long sessionId,
             @Valid @RequestBody NewNameRequest request
