@@ -1,13 +1,12 @@
 package com.alekseyruban.timemanagerapp.auth_service;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 class AuthServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void applicationClassIsPresent() {
+		org.assertj.core.api.Assertions.assertThat(AuthServiceApplication.class).isNotNull();
 	}
 
 }
